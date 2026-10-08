@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>Medicina Regenerativa y Terapias Celulares | Formación UBA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*{box-sizing:border-box}
+html,body,#dc-root,.sc-host{height:auto !important;min-height:100%}
+html{scroll-padding-top:88px;background:#050B16}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:#050B16;color:#E8F1F8;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:#7FE9F5}
+a:hover{color:#B5F5FB}
+::selection{background:rgba(59,227,242,.35)}
+:focus-visible{outline:2px solid #3BE3F2;outline-offset:3px;box-shadow:0 0 0 6px rgba(59,227,242,.2)}
+[aria-invalid="true"]{border-color:#FF7A7A !important}
+@keyframes dnaSpin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+@keyframes dnaFace{from{transform:rotateY(var(--a))}to{transform:rotateY(calc(var(--a) - 360deg))}}
+@keyframes cellFloat{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-60px) rotate(10deg)}}
+@keyframes cellMorph{0%,100%{border-radius:42% 58% 63% 37%/41% 44% 56% 59%}33%{border-radius:63% 37% 45% 55%/55% 62% 38% 45%}66%{border-radius:38% 62% 56% 44%/62% 38% 61% 39%}}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(59,227,242,.55)}50%{box-shadow:0 0 0 6px rgba(59,227,242,0)}}
+@media (prefers-reduced-motion:reduce){[data-anim]{animation:none !important}}
+</style>
+</helmet>
+
+<div aria-hidden="true" style="position:fixed; inset:0; z-index:0; pointer-events:none; background:radial-gradient(900px 600px at 85% -10%, rgba(59,227,242,0.10), transparent 70%), radial-gradient(800px 600px at -10% 40%, rgba(79,140,255,0.08), transparent 70%);"></div>
+<div aria-hidden="true" style="position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;">{{ cells }}</div>
+
+<a href="#contenido" style="position:absolute; left:-9999px; top:12px; z-index:100; background:#3BE3F2; color:#03131C; padding:12px 18px; font-weight:600; text-decoration:none; border-radius:999px;" style-focus="left:16px;">Saltar al contenido</a>
+
+<header style="position:sticky; top:0; z-index:50; background:rgba(5,11,22,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(125,211,252,0.12);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+    <a href="#inicio" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:#E8F1F8; padding:10px 0;">
+      <img src="assets/uba-logo.png" alt="Universidad de Buenos Aires" width="42" height="42" style="width:42px; height:42px; flex:none; filter:invert(1); opacity:0.95;">
+      <span aria-hidden="true" style="width:1px; height:32px; background:rgba(125,211,252,0.22); flex:none;"></span>
+      <span style="display:flex; flex-direction:column; gap:2px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;">Facultad de Medicina · UBA</span>
+        <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:500; line-height:1.15; color:#F2F8FC; white-space:nowrap;">Medicina Regenerativa y Terapias Celulares</span></sc-if>
+        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Space Grotesk',sans-serif; font-size:15.5px; font-weight:500; line-height:1.15; color:#F2F8FC; white-space:nowrap;">Medicina Regenerativa</span></sc-if>
+      </span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Principal" style="display:flex; align-items:center; gap:32px;">
+        <ul style="list-style:none; margin:0; padding:0; display:flex; gap:28px;">
+          <li><a href="#formacion" style="color:#C7D5E3; text-decoration:none; font-size:15px; font-weight:500; white-space:nowrap; transition:color .25s;" style-hover="color:#7FE9F5;">La formación</a></li>
+          <li><a href="#programa" style="color:#C7D5E3; text-decoration:none; font-size:15px; font-weight:500; white-space:nowrap; transition:color .25s;" style-hover="color:#7FE9F5;">Programa</a></li>
+          <li><a href="#docentes" style="color:#C7D5E3; text-decoration:none; font-size:15px; font-weight:500; white-space:nowrap; transition:color .25s;" style-hover="color:#7FE9F5;">Equipo docente</a></li>
+          <li><a href="#preguntas" style="color:#C7D5E3; text-decoration:none; font-size:15px; font-weight:500; white-space:nowrap; transition:color .25s;" style-hover="color:#7FE9F5;">Preguntas frecuentes</a></li>
+        </ul>
+        <a href="#contacto" style="display:inline-flex; align-items:center; min-height:42px; padding:0 20px; background:transparent; color:#7FE9F5; border:1px solid rgba(59,227,242,0.55); font-size:14.5px; font-weight:600; text-decoration:none; border-radius:999px; white-space:nowrap; transition:all .3s cubic-bezier(.2,.8,.2,1);" style-hover="background:#3BE3F2; color:#03131C; box-shadow:0 0 24px rgba(59,227,242,0.45);">Solicitar información</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" aria-expanded="{{ menu }}" aria-controls="menu-movil" onClick="{{ toggleMenu }}" style="display:inline-flex; align-items:center; gap:10px; min-height:44px; padding:0 16px; background:rgba(59,227,242,0.06); border:1px solid rgba(59,227,242,0.4); border-radius:999px; color:#E8F1F8; font:inherit; font-size:15px; font-weight:600; cursor:pointer;">
+        <span>Menú</span>
+        <span aria-hidden="true" style="display:flex; flex-direction:column; gap:4px;"><span style="width:16px; height:2px; background:#7FE9F5;"></span><span style="width:16px; height:2px; background:#7FE9F5;"></span></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <nav id="menu-movil" aria-label="Principal" style="position:absolute; top:100%; left:0; right:0; background:rgba(5,11,22,0.97); border-bottom:1px solid rgba(125,211,252,0.14); padding:8px clamp(20px,5vw,48px) 24px;">
+      <ul style="list-style:none; margin:0 0 16px; padding:0;">
+        <li style="border-bottom:1px solid rgba(125,211,252,0.1);"><a href="#formacion" onClick="{{ closeMenu }}" style="display:flex; align-items:center; min-height:52px; color:#E8F1F8; text-decoration:none; font-size:17px; font-weight:500;">La formación</a></li>
+        <li style="border-bottom:1px solid rgba(125,211,252,0.1);"><a href="#programa" onClick="{{ closeMenu }}" style="display:flex; align-items:center; min-height:52px; color:#E8F1F8; text-decoration:none; font-size:17px; font-weight:500;">Programa</a></li>
+        <li style="border-bottom:1px solid rgba(125,211,252,0.1);"><a href="#docentes" onClick="{{ closeMenu }}" style="display:flex; align-items:center; min-height:52px; color:#E8F1F8; text-decoration:none; font-size:17px; font-weight:500;">Equipo docente</a></li>
+        <li style="border-bottom:1px solid rgba(125,211,252,0.1);"><a href="#preguntas" onClick="{{ closeMenu }}" style="display:flex; align-items:center; min-height:52px; color:#E8F1F8; text-decoration:none; font-size:17px; font-weight:500;">Preguntas frecuentes</a></li>
+      </ul>
+      <a href="#contacto" onClick="{{ closeMenu }}" style="display:flex; align-items:center; justify-content:center; min-height:52px; background:#3BE3F2; color:#03131C; font-size:16px; font-weight:600; text-decoration:none; border-radius:999px; box-shadow:0 0 24px rgba(59,227,242,0.35);">Solicitar información</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="contenido" style="position:relative; z-index:1;">
+
+<section id="inicio" data-screen-label="01 Primera pantalla" onPointerMove="{{ heroMove }}" onPointerLeave="{{ heroLeave }}" style="position:relative; overflow:hidden; padding:clamp(36px,5vw,72px) 0 clamp(40px,5vw,64px);">
+  <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(125,211,252,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.05) 1px, transparent 1px); background-size:56px 56px; -webkit-mask-image:radial-gradient(ellipse 70% 70% at 70% 40%, #000 20%, transparent 75%); mask-image:radial-gradient(ellipse 70% 70% at 70% 40%, #000 20%, transparent 75%);"></div>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <div aria-hidden="true" style="position:absolute; top:10px; right:-70px; width:260px; height:560px; opacity:0.28; pointer-events:none;">{{ dnaSmall }}</div>
+  </sc-if>
+  <div style="position:relative; max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-wrap:wrap; align-items:center; gap:clamp(32px,5vw,64px);">
+    <div style="flex:3 1 560px; min-width:0;">
+      <p style="display:inline-flex; align-items:flex-start; gap:12px; margin:0 0 clamp(20px,2.5vw,28px); padding:9px 16px; border:1px solid rgba(59,227,242,0.45); border-radius:999px; background:rgba(59,227,242,0.07); box-shadow:0 0 24px rgba(59,227,242,0.12) inset; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.1em; line-height:1.5; color:#B5F5FB;"><span aria-hidden="true" data-anim="1" style="width:8px; height:8px; margin-top:5px; border-radius:50%; background:#3BE3F2; flex:none; animation:pulseDot 2.6s ease-in-out infinite;"></span><span>EL PRIMER CURSO DE MEDICINA REGENERATIVA CERTIFICADO POR LA UBA</span></p>
+      <h1 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2.3rem,1.3rem + 3.3vw,4.125rem); line-height:1.02; letter-spacing:-0.03em; color:#F5FAFD; max-width:14em; text-wrap:balance;">Dale a tu formación en medicina regenerativa el respaldo de la <span style="background:linear-gradient(90deg,#7FE9F5,#4F8CFF); -webkit-background-clip:text; background-clip:text; color:transparent;">Universidad de Buenos Aires.</span></h1>
+      <p style="margin:clamp(20px,2.4vw,26px) 0 0; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.6; color:#A9BBCE; max-width:36em; text-wrap:pretty;">Una formación de posgrado para médicos que buscan rigor científico, docentes con experiencia aplicada y una certificación universitaria de prestigio para acompañar su desarrollo profesional.</p>
+      <dl style="margin:clamp(24px,2.8vw,32px) 0 0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; max-width:560px;">
+        <div style="padding:14px 16px; border:1px solid rgba(125,211,252,0.16); border-radius:14px; background:rgba(12,26,48,0.6); display:flex; flex-direction:column-reverse; gap:4px;">
+          <dt style="font-size:13.5px; line-height:1.35; color:#A9BBCE;">encuentros semanales</dt>
+          <dd style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.6rem + 1.1vw,2.625rem); line-height:1; color:#7FE9F5; text-shadow:0 0 18px rgba(59,227,242,0.45);">12</dd>
+        </div>
+        <div style="padding:14px 16px; border:1px solid rgba(125,211,252,0.16); border-radius:14px; background:rgba(12,26,48,0.6); display:flex; flex-direction:column-reverse; gap:4px;">
+          <dt style="font-size:13.5px; line-height:1.35; color:#A9BBCE;">clases</dt>
+          <dd style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.6rem + 1.1vw,2.625rem); line-height:1; color:#7FE9F5; text-shadow:0 0 18px rgba(59,227,242,0.45);">24</dd>
+        </div>
+        <div style="padding:14px 16px; border:1px solid rgba(125,211,252,0.16); border-radius:14px; background:rgba(12,26,48,0.6); display:flex; flex-direction:column-reverse; gap:4px;">
+          <dt style="font-size:13.5px; line-height:1.35; color:#A9BBCE;">horas de formación</dt>
+          <dd style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.6rem + 1.1vw,2.625rem); line-height:1; color:#7FE9F5; text-shadow:0 0 18px rgba(59,227,242,0.45);">56</dd>
+        </div>
+      </dl>
+      <div style="margin-top:clamp(24px,2.8vw,32px); display:flex; flex-wrap:wrap; align-items:center; gap:16px 24px;">
+        <a id="hero-cta" href="#contacto" style="display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:56px; padding:0 30px; background:#3BE3F2; color:#03131C; font-size:16.5px; font-weight:600; text-decoration:none; border-radius:999px; box-shadow:0 0 0 1px rgba(59,227,242,0.5), 0 8px 30px -6px rgba(59,227,242,0.45); transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), background .35s;" style-hover="transform:translateY(-5px); background:#6EF0FA; color:#03131C; box-shadow:0 0 0 1px rgba(110,240,250,0.8), 0 16px 44px -8px rgba(59,227,242,0.7), 0 0 40px rgba(59,227,242,0.35);">Quiero recibir más información<span aria-hidden="true">→</span></a>
+        <p style="margin:0; font-size:14.5px; line-height:1.5; color:#A9BBCE; max-width:30em; flex:1 1 240px;">Conocé el programa, el equipo docente y los detalles de inscripción. Sin compromiso.</p>
+      </div>
+    </div>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="flex:1 1 340px; min-width:0; height:560px; position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(59,227,242,0.16), transparent 68%);"></div>
+        <div style="position:absolute; width:420px; height:420px; border-radius:50%; border:1px solid rgba(125,211,252,0.1);"></div>
+        <div style="position:absolute; width:300px; height:300px; border-radius:50%; border:1px dashed rgba(125,211,252,0.14);"></div>
+        {{ dnaLarge }}
+      </div>
+    </sc-if>
+  </div>
+  <div style="position:relative; max-width:1240px; margin:clamp(36px,5vw,56px) auto 0; padding:0 clamp(20px,5vw,48px);">
+    <a href="https://inscripcion.fmed.uba.ar/cgi-bin/posgrado/publicarOferta.py" target="_blank" rel="noopener noreferrer" aria-label="Ver la oferta oficial del curso en FMED UBA (se abre en una pestaña nueva)" style="display:flex; flex-wrap:wrap; gap:20px 40px; align-items:center; padding:clamp(20px,2.6vw,28px) clamp(20px,3vw,32px); border:1px solid rgba(125,211,252,0.16); border-radius:18px; background:rgba(10,22,42,0.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); color:inherit; text-decoration:none; transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.5); box-shadow:0 20px 44px -16px rgba(0,0,0,0.7), 0 0 30px rgba(59,227,242,0.16); color:inherit;">
+      <div style="flex:2 1 380px; min-width:0; display:flex; align-items:center; gap:clamp(16px,2.4vw,24px);">
+        <img src="assets/uba-logo.png" alt="Universidad de Buenos Aires" width="72" height="72" style="width:clamp(56px,6vw,72px); height:auto; flex:none; filter:invert(1);">
+        <div style="min-width:0;">
+        <p style="margin:0 0 8px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;">Denominación oficial</p>
+        <p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.125rem,1rem + 0.4vw,1.375rem); line-height:1.3; color:#F2F8FC;">Certificado Avanzado en Medicina Regenerativa y Terapias Celulares de Precisión</p>
+        <p style="margin:6px 0 0; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#8EA3B9;">Código: 4574</p>
+        <p style="margin:6px 0 0; font-size:14.5px; color:#A9BBCE;">Facultad de Medicina · Universidad de Buenos Aires</p>
+        <p style="margin:10px 0 0; display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#7FE9F5;">Ver oferta oficial en FMED UBA<span aria-hidden="true">↗</span></p>
+        </div>
+      </div>
+      <dl style="flex:1 1 360px; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:16px;">
+        <div><dt style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8EA3B9;">Clases teóricas</dt><dd style="margin:6px 0 0; font-size:15px; font-weight:600; color:#E8F1F8;">Por Zoom</dd></div>
+        <div><dt style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8EA3B9;">Materiales</dt><dd style="margin:6px 0 0; font-size:15px; font-weight:600; color:#E8F1F8;">Campus oficial de FMED UBA</dd></div>
+        <div><dt style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8EA3B9;">Curso</dt><dd style="margin:6px 0 0; font-size:15px; font-weight:600; color:#E8F1F8;">Posgrado Avanzado</dd></div>
+        <div><dt style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8EA3B9;">Créditos</dt><dd style="margin:6px 0 0; font-size:15px; font-weight:600; color:#E8F1F8;">4</dd></div>
+      </dl>
+    </a>
+  </div>
+</section>
+
+<section id="formacion" data-screen-label="02 Motivación y diferenciales" style="padding:clamp(72px,9vw,128px) 0;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px);">
+    <div style="display:flex; flex-wrap:wrap; gap:clamp(24px,5vw,72px);">
+      <div data-reveal="1" style="flex:1 1 420px; min-width:0;">
+        <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>La formación</p>
+        <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.3rem + 2.3vw,3.25rem); line-height:1.06; letter-spacing:-0.025em; color:#F2F8FC; max-width:14em; text-wrap:balance;">Elegí una formación con el respaldo académico que buscás.</h2>
+      </div>
+      <div data-reveal="1" data-reveal-delay="120" style="flex:1 1 420px; min-width:0; display:flex; flex-direction:column; gap:18px; padding-top:clamp(0px,3vw,38px);">
+        <p style="margin:0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.65; color:#A9BBCE; max-width:34em; text-wrap:pretty;">Cuando decidís avanzar en un nuevo campo de la medicina, importa qué aprendés, de quién aprendés y qué institución certifica tu formación.</p>
+        <p style="margin:0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.65; color:#A9BBCE; max-width:34em; text-wrap:pretty;">Este curso reúne la certificación de la Universidad de Buenos Aires, un programa que conecta fundamentos científicos con análisis clínico y docentes que aplican estos conocimientos en su actividad profesional.</p>
+      </div>
+    </div>
+    <ol style="list-style:none; margin:clamp(48px,6vw,72px) 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px;">
+      <li data-reveal="1" data-reveal-delay="0">
+        <div style="height:100%; padding:28px; border:1px solid rgba(125,211,252,0.14); border-radius:18px; background:linear-gradient(180deg, rgba(16,34,62,0.7), rgba(8,18,36,0.7)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 20px 44px -16px rgba(0,0,0,0.7), 0 0 30px rgba(59,227,242,0.14);">
+          <span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#7FE9F5;">01</span>
+          <h3 style="margin:18px 0 8px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.5rem; line-height:1.2; color:#F2F8FC;">Certificación UBA</h3>
+          <p style="margin:0; font-size:16px; line-height:1.55; color:#A9BBCE;">Respaldo universitario para tu formación.</p>
+        </div>
+      </li>
+      <li data-reveal="1" data-reveal-delay="100">
+        <div style="height:100%; padding:28px; border:1px solid rgba(125,211,252,0.14); border-radius:18px; background:linear-gradient(180deg, rgba(16,34,62,0.7), rgba(8,18,36,0.7)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 20px 44px -16px rgba(0,0,0,0.7), 0 0 30px rgba(59,227,242,0.14);">
+          <span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#7FE9F5;">02</span>
+          <h3 style="margin:18px 0 8px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.5rem; line-height:1.2; color:#F2F8FC;">Experiencia aplicada</h3>
+          <p style="margin:0; font-size:16px; line-height:1.55; color:#A9BBCE;">Docentes con actividad clínica y científica en los temas que enseñan.</p>
+        </div>
+      </li>
+      <li data-reveal="1" data-reveal-delay="200">
+        <div style="height:100%; padding:28px; border:1px solid rgba(125,211,252,0.14); border-radius:18px; background:linear-gradient(180deg, rgba(16,34,62,0.7), rgba(8,18,36,0.7)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 20px 44px -16px rgba(0,0,0,0.7), 0 0 30px rgba(59,227,242,0.14);">
+          <span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#7FE9F5;">03</span>
+          <h3 style="margin:18px 0 8px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.5rem; line-height:1.2; color:#F2F8FC;">Criterio profesional</h3>
+          <p style="margin:0; font-size:16px; line-height:1.55; color:#A9BBCE;">Herramientas para evaluar alternativas y fundamentar decisiones.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="beneficios" data-screen-label="03 Beneficios" style="padding:clamp(72px,9vw,128px) 0; background:linear-gradient(180deg, transparent, rgba(10,24,48,0.7) 18%, rgba(10,24,48,0.7) 82%, transparent); border-top:1px solid rgba(125,211,252,0.08); border-bottom:1px solid rgba(125,211,252,0.08);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-wrap:wrap; gap:48px clamp(40px,6vw,96px);">
+    <div data-reveal="1" style="flex:1 1 360px; min-width:0;">
+      <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>Qué te aporta</p>
+      <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.3rem + 2.3vw,3.25rem); line-height:1.06; letter-spacing:-0.025em; color:#F2F8FC; max-width:13em; text-wrap:balance;">Construí las bases para desarrollar tu práctica en medicina regenerativa.</h2>
+      <p style="margin:28px 0 0; font-size:17px; line-height:1.6; color:#C7D5E3; max-width:28em; text-wrap:pretty;">Pensado para médicos que buscan iniciarse en este campo con una formación organizada, fundamentos científicos y conexión con el trabajo profesional.</p>
+      <a href="#contacto" style="margin-top:28px; display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:54px; padding:0 28px; background:#3BE3F2; color:#03131C; font-size:16px; font-weight:600; text-decoration:none; border-radius:999px; box-shadow:0 0 0 1px rgba(59,227,242,0.5), 0 8px 30px -6px rgba(59,227,242,0.45); transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), background .35s;" style-hover="transform:translateY(-5px); background:#6EF0FA; color:#03131C; box-shadow:0 0 0 1px rgba(110,240,250,0.8), 0 16px 44px -8px rgba(59,227,242,0.7), 0 0 40px rgba(59,227,242,0.35);">Quiero recibir más información<span aria-hidden="true">→</span></a>
+    </div>
+    <ol style="flex:1.3 1 480px; min-width:0; list-style:none; margin:0; padding:0 0 0 30px; position:relative;">
+      <span aria-hidden="true" style="position:absolute; left:6px; top:10px; bottom:10px; width:1px; background:linear-gradient(180deg, #3BE3F2, rgba(79,140,255,0.6), rgba(79,140,255,0));"></span>
+      <li data-reveal="1" data-reveal-delay="0" style="position:relative; padding:0 0 34px;">
+        <span aria-hidden="true" style="position:absolute; left:-30px; top:6px; width:13px; height:13px; border-radius:50%; background:#050B16; border:2px solid #3BE3F2; box-shadow:0 0 12px rgba(59,227,242,0.7);"></span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.25rem,1.1rem + 0.5vw,1.5rem); line-height:1.25; color:#F2F8FC;">Ampliá tu perspectiva terapéutica</h3>
+        <p style="margin:8px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE; max-width:36em; text-wrap:pretty;">Conocé las principales herramientas del campo y explorá qué lugar podrían ocupar dentro de tu especialidad.</p>
+      </li>
+      <li data-reveal="1" data-reveal-delay="80" style="position:relative; padding:0 0 34px;">
+        <span aria-hidden="true" style="position:absolute; left:-30px; top:6px; width:13px; height:13px; border-radius:50%; background:#050B16; border:2px solid #3BE3F2; box-shadow:0 0 12px rgba(59,227,242,0.7);"></span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.25rem,1.1rem + 0.5vw,1.5rem); line-height:1.25; color:#F2F8FC;">Ganá criterio para evaluar alternativas</h3>
+        <p style="margin:8px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE; max-width:36em; text-wrap:pretty;">Aprendé a analizar la evidencia, reconocer limitaciones y fundamentar cuándo considerar un abordaje regenerativo.</p>
+      </li>
+      <li data-reveal="1" data-reveal-delay="160" style="position:relative; padding:0 0 34px;">
+        <span aria-hidden="true" style="position:absolute; left:-30px; top:6px; width:13px; height:13px; border-radius:50%; background:#050B16; border:2px solid #5FB4FF; box-shadow:0 0 12px rgba(95,180,255,0.7);"></span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.25rem,1.1rem + 0.5vw,1.5rem); line-height:1.25; color:#F2F8FC;">Conversá con tus pacientes con mayor claridad</h3>
+        <p style="margin:8px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE; max-width:36em; text-wrap:pretty;">Desarrollá recursos para explicar qué se conoce sobre estas terapias, qué sigue en investigación y qué expectativas son razonables.</p>
+      </li>
+      <li data-reveal="1" data-reveal-delay="240" style="position:relative; padding:0 0 34px;">
+        <span aria-hidden="true" style="position:absolute; left:-30px; top:6px; width:13px; height:13px; border-radius:50%; background:#050B16; border:2px solid #5FB4FF; box-shadow:0 0 12px rgba(95,180,255,0.7);"></span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.25rem,1.1rem + 0.5vw,1.5rem); line-height:1.25; color:#F2F8FC;">Conectá la ciencia con decisiones clínicas</h3>
+        <p style="margin:8px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE; max-width:36em; text-wrap:pretty;">Integrá antecedentes, necesidades y objetivos del paciente al análisis de casos y propuestas personalizadas.</p>
+      </li>
+      <li data-reveal="1" data-reveal-delay="320" style="position:relative; padding:0;">
+        <span aria-hidden="true" style="position:absolute; left:-30px; top:6px; width:13px; height:13px; border-radius:50%; background:#050B16; border:2px solid #4F8CFF; box-shadow:0 0 12px rgba(79,140,255,0.7);"></span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.25rem,1.1rem + 0.5vw,1.5rem); line-height:1.25; color:#F2F8FC;">Fortalecé tu perfil profesional</h3>
+        <p style="margin:8px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE; max-width:36em; text-wrap:pretty;">Sumá una formación de posgrado con certificación de la UBA y orientá tu actualización hacia un campo que querés incorporar a tu trayectoria.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="programa" data-screen-label="04 Programa" style="padding:clamp(72px,9vw,128px) 0;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px);">
+    <div data-reveal="1" style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px 64px;">
+      <div style="flex:1 1 520px; min-width:0;">
+        <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>Programa</p>
+        <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.3rem + 2.3vw,3.25rem); line-height:1.06; letter-spacing:-0.025em; color:#F2F8FC; max-width:15em; text-wrap:balance;">De los fundamentos científicos al análisis de casos clínicos.</h2>
+      </div>
+      <p style="flex:0 1 380px; margin:0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.6; color:#A9BBCE; text-wrap:pretty;">24 clases organizadas en 4 bloques para avanzar de manera progresiva e integrar lo aprendido.</p>
+    </div>
+
+    <div style="margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr)); gap:20px; align-items:start;">
+      <article data-reveal="1" data-reveal-delay="0">
+        <div style="padding:clamp(24px,3vw,32px); border:1px solid rgba(125,211,252,0.14); border-radius:20px; background:linear-gradient(180deg, rgba(16,34,62,0.72), rgba(8,18,36,0.72)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 34px rgba(59,227,242,0.15);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase; color:#7FE9F5;">Bloque 01</span>
+            <span aria-hidden="true" style="font-family:'Space Grotesk',sans-serif; font-size:3rem; font-weight:500; line-height:0.9; color:transparent; -webkit-text-stroke:1px rgba(127,233,245,0.55);">1</span>
+          </div>
+          <h3 id="p1-t" style="margin:14px 0 0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.375rem,1.2rem + 0.6vw,1.75rem); line-height:1.2; color:#F2F8FC; text-wrap:balance;"><span style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Bloque 1 · </span>Fundamentos y biología de la regeneración</h3>
+          <p style="margin:10px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE;">Comprendé los procesos biológicos sobre los que se construyen las estrategias regenerativas.</p>
+          <button type="button" aria-expanded="{{ open.p1 }}" aria-controls="p1-c" onClick="{{ tg.p1 }}" style="margin-top:22px; width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; padding:12px 0 0; background:none; border:0; border-top:1px solid rgba(125,211,252,0.14); color:#7FE9F5; font:inherit; font-size:15px; font-weight:600; cursor:pointer;">
+            <span>Contenidos del bloque (6)</span>
+            <span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.p1 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span>
+          </button>
+          <div id="p1-c" role="region" aria-labelledby="p1-t" hidden="{{ shut.p1 }}">
+            <ul style="list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column;">
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Historia y conceptos de regeneración.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Nicho celular y embriogénesis.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Epigenética y senescencia.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Fisiología celular, inmunología e inflamación.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Jerarquía celular y secretoma.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Células madre mesenquimales y fuentes de obtención.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal="1" data-reveal-delay="100">
+        <div style="padding:clamp(24px,3vw,32px); border:1px solid rgba(125,211,252,0.14); border-radius:20px; background:linear-gradient(180deg, rgba(16,34,62,0.72), rgba(8,18,36,0.72)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 34px rgba(59,227,242,0.15);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase; color:#7FE9F5;">Bloque 02</span>
+            <span aria-hidden="true" style="font-family:'Space Grotesk',sans-serif; font-size:3rem; font-weight:500; line-height:0.9; color:transparent; -webkit-text-stroke:1px rgba(127,233,245,0.55);">2</span>
+          </div>
+          <h3 id="p2-t" style="margin:14px 0 0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.375rem,1.2rem + 0.6vw,1.75rem); line-height:1.2; color:#F2F8FC; text-wrap:balance;"><span style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Bloque 2 · </span>Herramientas terapéuticas y bioquímica</h3>
+          <p style="margin:10px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE;">Conocé las principales herramientas del campo, sus mecanismos y las líneas de investigación que las sustentan.</p>
+          <button type="button" aria-expanded="{{ open.p2 }}" aria-controls="p2-c" onClick="{{ tg.p2 }}" style="margin-top:22px; width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; padding:12px 0 0; background:none; border:0; border-top:1px solid rgba(125,211,252,0.14); color:#7FE9F5; font:inherit; font-size:15px; font-weight:600; cursor:pointer;">
+            <span>Contenidos del bloque (6)</span>
+            <span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.p2 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span>
+          </button>
+          <div id="p2-c" role="region" aria-labelledby="p2-t" hidden="{{ shut.p2 }}">
+            <ul style="list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column;">
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Vesículas extracelulares y exosomas.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Aislamiento y caracterización.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Carga terapéutica y péptidos bioactivos.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Inmunoterapia celular.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Epigenómica aplicada y optimización celular.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Estrategias epigenéticas y longevidad.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal="1" data-reveal-delay="0">
+        <div style="padding:clamp(24px,3vw,32px); border:1px solid rgba(125,211,252,0.14); border-radius:20px; background:linear-gradient(180deg, rgba(16,34,62,0.72), rgba(8,18,36,0.72)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 34px rgba(59,227,242,0.15);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase; color:#7FE9F5;">Bloque 03</span>
+            <span aria-hidden="true" style="font-family:'Space Grotesk',sans-serif; font-size:3rem; font-weight:500; line-height:0.9; color:transparent; -webkit-text-stroke:1px rgba(127,233,245,0.55);">3</span>
+          </div>
+          <h3 id="p3-t" style="margin:14px 0 0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.375rem,1.2rem + 0.6vw,1.75rem); line-height:1.2; color:#F2F8FC; text-wrap:balance;"><span style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Bloque 3 · </span>Aplicación clínica e inteligencia artificial</h3>
+          <p style="margin:10px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE;">Explorá abordajes en distintas áreas médicas e incorporá herramientas para evaluar su evidencia.</p>
+          <button type="button" aria-expanded="{{ open.p3 }}" aria-controls="p3-c" onClick="{{ tg.p3 }}" style="margin-top:22px; width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; padding:12px 0 0; background:none; border:0; border-top:1px solid rgba(125,211,252,0.14); color:#7FE9F5; font:inherit; font-size:15px; font-weight:600; cursor:pointer;">
+            <span>Contenidos del bloque (7)</span>
+            <span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.p3 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span>
+          </button>
+          <div id="p3-c" role="region" aria-labelledby="p3-t" hidden="{{ shut.p3 }}">
+            <ul style="list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column;">
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Patologías neurodegenerativas y metabólicas.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Trastornos urogenitales y desbalances hormonales.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Inmunomodulación y longevidad.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Ortopedia y medicina musculoesquelética.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Marco regulatorio, ética y bioseguridad.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Inteligencia artificial en medicina de precisión.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Ensayos clínicos y bioestadística.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal="1" data-reveal-delay="100">
+        <div style="padding:clamp(24px,3vw,32px); border:1px solid rgba(125,211,252,0.14); border-radius:20px; background:linear-gradient(180deg, rgba(16,34,62,0.72), rgba(8,18,36,0.72)); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.45); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 34px rgba(59,227,242,0.15);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase; color:#7FE9F5;">Bloque 04</span>
+            <span aria-hidden="true" style="font-family:'Space Grotesk',sans-serif; font-size:3rem; font-weight:500; line-height:0.9; color:transparent; -webkit-text-stroke:1px rgba(127,233,245,0.55);">4</span>
+          </div>
+          <h3 id="p4-t" style="margin:14px 0 0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.375rem,1.2rem + 0.6vw,1.75rem); line-height:1.2; color:#F2F8FC; text-wrap:balance;"><span style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Bloque 4 · </span>Integración y análisis de casos</h3>
+          <p style="margin:10px 0 0; font-size:16.5px; line-height:1.6; color:#A9BBCE;">Conectá los fundamentos con la revisión de técnicas, el análisis de evidencia y el desarrollo de un caso clínico.</p>
+          <button type="button" aria-expanded="{{ open.p4 }}" aria-controls="p4-c" onClick="{{ tg.p4 }}" style="margin-top:22px; width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; padding:12px 0 0; background:none; border:0; border-top:1px solid rgba(125,211,252,0.14); color:#7FE9F5; font:inherit; font-size:15px; font-weight:600; cursor:pointer;">
+            <span>Contenidos del bloque (5)</span>
+            <span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.p4 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span>
+          </button>
+          <div id="p4-c" role="region" aria-labelledby="p4-t" hidden="{{ shut.p4 }}">
+            <ul style="list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column;">
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Laboratorio teórico.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Fundamentos de técnicas de infiltración.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Revisión crítica de artículos científicos.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Discusión de casos clínicos.</li>
+              <li style="display:flex; gap:12px; align-items:baseline; padding:10px 0; border-top:1px solid rgba(125,211,252,0.08); font-size:15.5px; line-height:1.5; color:#D3DEE9;"><span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2; flex:none; transform:translateY(-2px);"></span>Desarrollo del caso final integrador.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="docentes" data-screen-label="05 Equipo docente" style="padding:clamp(72px,9vw,128px) 0; border-top:1px solid rgba(125,211,252,0.08);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px);">
+    <div style="display:flex; flex-wrap:wrap; gap:clamp(24px,5vw,72px);">
+      <div data-reveal="1" style="flex:1 1 440px; min-width:0;">
+        <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>Equipo docente</p>
+        <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.3rem + 2.3vw,3.25rem); line-height:1.06; letter-spacing:-0.025em; color:#F2F8FC; max-width:14em; text-wrap:balance;">Aprendé de profesionales que trabajan con lo que enseñan.</h2>
+      </div>
+      <div data-reveal="1" data-reveal-delay="120" style="flex:1 1 420px; min-width:0; display:flex; flex-direction:column; gap:18px; padding-top:clamp(0px,3vw,38px);">
+        <p style="margin:0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.65; color:#A9BBCE; max-width:34em; text-wrap:pretty;">El equipo docente aplica los conceptos del programa en sus respectivos ámbitos de trabajo: la clínica, el laboratorio y la investigación.</p>
+        <p style="margin:0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.65; color:#A9BBCE; max-width:34em; text-wrap:pretty;">Esa experiencia aporta contexto para comprender cómo se relacionan los fundamentos con las decisiones profesionales y los desafíos de su aplicación.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(48px,6vw,72px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr)); gap:20px;">
+      <div data-reveal="1" data-reveal-delay="0">
+        <article style="height:100%; position:relative; overflow:hidden; padding:clamp(24px,3vw,36px); border-radius:22px; border:1px solid rgba(59,227,242,0.35); background:radial-gradient(500px 260px at 100% 0%, rgba(59,227,242,0.14), transparent 70%), linear-gradient(180deg, rgba(16,34,62,0.85), rgba(8,18,36,0.85)); box-shadow:0 0 50px -10px rgba(59,227,242,0.18); display:flex; flex-wrap:wrap; align-items:flex-start; gap:24px 28px; transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.55); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 40px rgba(59,227,242,0.2);">
+          <div style="flex:0 0 168px; position:relative;">
+            <div aria-hidden="true" style="position:absolute; inset:-1px; border-radius:18px; background:linear-gradient(160deg, rgba(59,227,242,0.8), rgba(79,140,255,0.2) 60%, transparent); filter:blur(14px); opacity:0.45;"></div>
+            <img src="assets/feleder.jpg" alt="Dr. Carlos Feleder" width="900" height="900" style="position:relative; display:block; width:168px; height:168px; object-fit:cover; object-position:50% 20%; border-radius:16px; border:1px solid rgba(59,227,242,0.45);">
+          </div>
+          <div style="flex:1 1 240px; min-width:0;">
+            <p style="margin:0 0 12px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;">Dirección académica</p>
+            <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.75rem,1.4rem + 1.2vw,2.375rem); line-height:1.05; letter-spacing:-0.025em; color:#F5FAFD;">Dr. Carlos Feleder</h3>
+            <p style="margin:18px 0 0; padding-top:18px; border-top:1px solid rgba(125,211,252,0.16); font-size:16px; line-height:1.6; color:#C7D5E3; text-wrap:pretty;">Médico egresado de la UBA, con trayectoria en investigación y docencia en Alemania y Estados Unidos. Autor de más de 50 publicaciones científicas, integra la investigación con la práctica clínica en medicina regenerativa.</p>
+          </div>
+        </article>
+      </div>
+      <div data-reveal="1" data-reveal-delay="120">
+        <article style="height:100%; position:relative; overflow:hidden; padding:clamp(24px,3vw,36px); border-radius:22px; border:1px solid rgba(59,227,242,0.35); background:radial-gradient(500px 260px at 100% 0%, rgba(59,227,242,0.14), transparent 70%), linear-gradient(180deg, rgba(16,34,62,0.85), rgba(8,18,36,0.85)); box-shadow:0 0 50px -10px rgba(59,227,242,0.18); display:flex; flex-wrap:wrap; align-items:flex-start; gap:24px 28px; transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;" style-hover="transform:translateY(-5px); border-color:rgba(59,227,242,0.55); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 40px rgba(59,227,242,0.2);">
+          <div style="flex:0 0 168px; position:relative;">
+            <div aria-hidden="true" style="position:absolute; inset:-1px; border-radius:18px; background:linear-gradient(160deg, rgba(59,227,242,0.8), rgba(79,140,255,0.2) 60%, transparent); filter:blur(14px); opacity:0.45;"></div>
+            <img src="assets/daniel-perez.jpg" alt="Dr. Daniel Pérez" width="900" height="900" style="position:relative; display:block; width:168px; height:168px; object-fit:cover; object-position:50% 25%; border-radius:16px; border:1px solid rgba(59,227,242,0.45);">
+          </div>
+          <div style="flex:1 1 240px; min-width:0;">
+            <p style="margin:0 0 12px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;">Coordinación del curso</p>
+            <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.75rem,1.4rem + 1.2vw,2.375rem); line-height:1.05; letter-spacing:-0.025em; color:#F5FAFD;">Dr. Daniel Pérez</h3>
+            <p style="margin:18px 0 0; padding-top:18px; border-top:1px solid rgba(125,211,252,0.16); font-size:16px; line-height:1.6; color:#C7D5E3; text-wrap:pretty;">Médico cardiólogo de la UBA, especialista en longevidad, con formación en medicina del antienvejecimiento en la Universidad de Sevilla. Director médico de IMAC desde 2002, combina experiencia clínica y liderazgo en salud.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <ul style="list-style:none; margin:20px 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr)); gap:16px;">
+      <li data-reveal="1" data-reveal-delay="0"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s; " style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">Florencia Mansilla</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Epigenética, senescencia, inmunoterapia y laboratorio teórico.</p></div></li>
+      <li data-reveal="1" data-reveal-delay="60"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">María Cruz Miraglia</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Fisiología celular, inmunología, inflamación y secretoma.</p></div></li>
+      <li data-reveal="1" data-reveal-delay="120"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">Reinaldo Campestri</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Células madre mesenquimales, laboratorio teórico y análisis de casos.</p></div></li>
+      <li data-reveal="1" data-reveal-delay="180"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">Cecilia Pérez</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Exosomas, vesículas extracelulares y caracterización.</p></div></li>
+      <li data-reveal="1" data-reveal-delay="0"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">Marisa Pérez Solís y Andrea Sinagra</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Abordajes en patologías neurodegenerativas y metabólicas.</p></div></li>
+      <li data-reveal="1" data-reveal-delay="60"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">Deborah Egea</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Abordajes urogenitales y hormonales.</p></div></li>
+      <li data-reveal="1" data-reveal-delay="120"><div style="height:100%; padding:22px 24px; border:1px solid rgba(125,211,252,0.12); border-radius:16px; background:rgba(10,22,42,0.6); transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s;" style-hover="transform:translateY(-4px); border-color:rgba(59,227,242,0.4);"><p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.2; color:#F2F8FC;">Federico Zoya</p><p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Inteligencia artificial, medicina de precisión y metodología de investigación.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="modalidad" data-screen-label="06 Modalidad y certificación" style="padding:clamp(72px,9vw,128px) 0; border-top:1px solid rgba(125,211,252,0.08);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px);">
+    <div data-reveal="1">
+      <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>Modalidad y certificación</p>
+      <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.3rem + 2.3vw,3.25rem); line-height:1.06; letter-spacing:-0.025em; color:#F2F8FC; max-width:16em; text-wrap:balance;">Una formación universitaria organizada para avanzar semana a semana.</h2>
+    </div>
+
+    <div style="margin-top:clamp(40px,5vw,64px); display:flex; flex-wrap:wrap; gap:40px clamp(40px,6vw,88px);">
+      <div data-reveal="1" style="flex:1 1 420px; min-width:0;">
+        <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;">
+          <span style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(4.5rem,3.5rem + 3.5vw,7rem); line-height:0.9; letter-spacing:-0.04em; background:linear-gradient(180deg,#B5F5FB,#3BE3F2 60%,#4F8CFF); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 22px rgba(59,227,242,0.35));">56</span>
+          <span style="font-size:18px; font-weight:600; color:#E8F1F8;">horas totales</span>
+        </div>
+        <div aria-hidden="true" style="margin-top:28px; display:flex; height:10px; gap:4px;">
+          <span style="flex:36; border-radius:999px; background:linear-gradient(90deg,#4F8CFF,#5FB4FF); box-shadow:0 0 14px rgba(79,140,255,0.5);"></span>
+          <span style="flex:20; border-radius:999px; background:#3BE3F2; box-shadow:0 0 14px rgba(59,227,242,0.6);"></span>
+        </div>
+        <div style="margin-top:14px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px;">
+          <p style="margin:0; display:flex; align-items:center; gap:10px; font-size:16px; color:#D3DEE9;"><span aria-hidden="true" style="width:10px; height:10px; border-radius:50%; background:#5FB4FF; flex:none;"></span><strong style="font-weight:600; color:#F2F8FC;">36 h</strong> teóricas</p>
+          <p style="margin:0; display:flex; align-items:center; gap:10px; font-size:16px; color:#D3DEE9;"><span aria-hidden="true" style="width:10px; height:10px; border-radius:50%; background:#3BE3F2; flex:none;"></span><strong style="font-weight:600; color:#F2F8FC;">20 h</strong> de actividades prácticas</p>
+        </div>
+        <div style="margin-top:32px;">
+          <p style="margin:0 0 6px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8EA3B9;">Actividades prácticas</p>
+          <ul style="list-style:none; margin:0; padding:0;">
+            <li style="display:flex; gap:16px; padding:12px 0; border-top:1px solid rgba(125,211,252,0.1); font-size:15.5px; line-height:1.45; color:#C7D5E3;"><span style="flex:0 0 40px; font-family:'IBM Plex Mono',monospace; font-weight:500; color:#7FE9F5;">8 h</span>Revisión bibliográfica dirigida.</li>
+            <li style="display:flex; gap:16px; padding:12px 0; border-top:1px solid rgba(125,211,252,0.1); font-size:15.5px; line-height:1.45; color:#C7D5E3;"><span style="flex:0 0 40px; font-family:'IBM Plex Mono',monospace; font-weight:500; color:#7FE9F5;">4 h</span>Aplicación práctica de herramientas.</li>
+            <li style="display:flex; gap:16px; padding:12px 0; border-top:1px solid rgba(125,211,252,0.1); border-bottom:1px solid rgba(125,211,252,0.1); font-size:15.5px; line-height:1.45; color:#C7D5E3;"><span style="flex:0 0 40px; font-family:'IBM Plex Mono',monospace; font-weight:500; color:#7FE9F5;">8 h</span>Desarrollo del caso clínico final.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div data-reveal="1" data-reveal-delay="120" style="flex:1 1 420px; min-width:0;">
+        <dl style="margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:14px;">
+          <div style="padding:22px; border:1px solid rgba(125,211,252,0.14); border-radius:16px; background:rgba(10,22,42,0.6);">
+            <dt style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.25; color:#F2F8FC;">12 encuentros semanales</dt>
+            <dd style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">3 horas por encuentro, con dos clases consecutivas.</dd>
+          </div>
+          <div style="padding:22px; border:1px solid rgba(125,211,252,0.14); border-radius:16px; background:rgba(10,22,42,0.6);">
+            <dt style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.25; color:#F2F8FC;">Clases teóricas por Zoom</dt>
+          </div>
+          <div style="padding:22px; border:1px solid rgba(125,211,252,0.14); border-radius:16px; background:rgba(10,22,42,0.6);">
+            <dt style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.25; color:#F2F8FC;">Campus oficial de FMED UBA</dt>
+            <dd style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#A9BBCE;">Acceso al curso y a los materiales.</dd>
+          </div>
+          <div style="padding:22px; border:1px solid rgba(125,211,252,0.14); border-radius:16px; background:rgba(10,22,42,0.6);">
+            <dt style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.25; color:#F2F8FC;">4 créditos</dt>
+          </div>
+        </dl>
+        <p style="margin:20px 0 0; display:flex; gap:12px; align-items:flex-start; font-size:15.5px; line-height:1.55; color:#C7D5E3;"><span aria-hidden="true" style="flex:none; width:22px; height:22px; border:1px solid rgba(59,227,242,0.6); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7FE9F5;">i</span><span>Consultá al equipo por la organización de las actividades prácticas y las instancias presenciales.</span></p>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="margin-top:clamp(56px,7vw,96px);">
+      <div style="position:relative; overflow:hidden; padding:clamp(32px,5vw,64px); border-radius:24px; border:1px solid rgba(59,227,242,0.4); background:radial-gradient(700px 360px at 0% 100%, rgba(79,140,255,0.18), transparent 70%), radial-gradient(600px 300px at 100% 0%, rgba(59,227,242,0.16), transparent 70%), #081428; box-shadow:0 0 60px -14px rgba(59,227,242,0.25); display:flex; flex-wrap:wrap; gap:28px clamp(40px,6vw,96px);">
+        <div style="flex:1 1 380px; min-width:0;">
+          <p style="margin:0 0 16px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;">Certificación</p>
+          <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.75rem,1.3rem + 1.5vw,2.5rem); line-height:1.1; letter-spacing:-0.02em; color:#F5FAFD; max-width:16em; text-wrap:balance;">Una certificación universitaria para acompañar tu desarrollo profesional.</h3>
+        </div>
+        <div style="flex:1 1 380px; min-width:0; display:flex; flex-direction:column; gap:24px;">
+          <p style="margin:0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.6; color:#C7D5E3; text-wrap:pretty;">Al cumplir los requisitos académicos de aprobación, accedés al Certificado Avanzado en Medicina Regenerativa y Terapias Celulares de Precisión de la Facultad de Medicina de la Universidad de Buenos Aires.</p>
+          <p style="margin:0; padding-top:18px; border-top:1px solid rgba(125,211,252,0.18); font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#F2F8FC;">Facultad de Medicina · Universidad de Buenos Aires</p>
+          <div>
+            <a href="#contacto" style="display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:54px; padding:0 28px; background:#3BE3F2; color:#03131C; font-size:16px; font-weight:600; text-decoration:none; border-radius:999px; box-shadow:0 0 0 1px rgba(59,227,242,0.5), 0 8px 30px -6px rgba(59,227,242,0.45); transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), background .35s;" style-hover="transform:translateY(-5px); background:#6EF0FA; color:#03131C; box-shadow:0 0 0 1px rgba(110,240,250,0.8), 0 16px 44px -8px rgba(59,227,242,0.7), 0 0 40px rgba(59,227,242,0.35);">Quiero recibir más información<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas" data-screen-label="07 Preguntas frecuentes" style="padding:clamp(72px,9vw,128px) 0; border-top:1px solid rgba(125,211,252,0.08);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-wrap:wrap; gap:32px clamp(40px,6vw,96px);">
+    <div data-reveal="1" style="flex:1 1 300px; min-width:0;">
+      <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>FAQ</p>
+      <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2rem,1.3rem + 2.3vw,3.25rem); line-height:1.06; letter-spacing:-0.025em; color:#F2F8FC; max-width:8em;">Preguntas frecuentes</h2>
+    </div>
+    <div data-reveal="1" data-reveal-delay="120" style="flex:2 1 540px; min-width:0; display:flex; flex-direction:column; gap:10px;">
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q1-b" aria-expanded="{{ open.q1 }}" aria-controls="q1-c" onClick="{{ tg.q1 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿A quién está dirigido?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q1 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q1-c" role="region" aria-labelledby="q1-b" hidden="{{ shut.q1 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;">Está orientado principalmente a médicos interesados en formarse en medicina regenerativa. El requisito de ingreso informado es contar con título de grado en Medicina, Biología o carreras afines.</p></div>
+      </div>
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q2-b" aria-expanded="{{ open.q2 }}" aria-controls="q2-c" onClick="{{ tg.q2 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿Necesito experiencia previa en medicina regenerativa?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q2 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q2-c" role="region" aria-labelledby="q2-b" hidden="{{ shut.q2 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;">El programa comienza por los fundamentos y avanza hacia herramientas terapéuticas, aplicaciones clínicas y análisis de casos.</p></div>
+      </div>
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q3-b" aria-expanded="{{ open.q3 }}" aria-controls="q3-c" onClick="{{ tg.q3 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿Cómo se cursa y cuánto dura?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q3 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q3-c" role="region" aria-labelledby="q3-b" hidden="{{ shut.q3 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;">Se organiza en 12 encuentros semanales de 3 horas. Las clases teóricas se realizan por Zoom y los materiales se encuentran en el Campus oficial de FMED UBA. La carga total es de 56 horas. Nuestro equipo te informará la organización de las actividades prácticas y las instancias presenciales.</p></div>
+      </div>
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q4-b" aria-expanded="{{ open.q4 }}" aria-controls="q4-c" onClick="{{ tg.q4 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿Incluye análisis de casos clínicos?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q4 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q4-c" role="region" aria-labelledby="q4-b" hidden="{{ shut.q4 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;">Sí. Incluye discusión de casos, análisis de artículos científicos y desarrollo de un caso clínico final.</p></div>
+      </div>
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q5-b" aria-expanded="{{ open.q5 }}" aria-controls="q5-c" onClick="{{ tg.q5 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿Qué certificado se obtiene?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q5 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q5-c" role="region" aria-labelledby="q5-b" hidden="{{ shut.q5 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;">El Certificado Avanzado en Medicina Regenerativa y Terapias Celulares de Precisión de la Facultad de Medicina de la Universidad de Buenos Aires, sujeto al cumplimiento de los requisitos académicos de aprobación.</p></div>
+      </div>
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q6-b" aria-expanded="{{ open.q6 }}" aria-controls="q6-c" onClick="{{ tg.q6 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿La certificación habilita a aplicar cualquier terapia regenerativa?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q6 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q6-c" role="region" aria-labelledby="q6-b" hidden="{{ shut.q6 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;">La formación aporta conocimientos y herramientas de análisis. La aplicación de cada intervención depende de las incumbencias profesionales, la normativa correspondiente y las condiciones clínicas y de seguridad de cada caso.</p></div>
+      </div>
+      <div style="border:1px solid rgba(125,211,252,0.12); border-radius:14px; background:rgba(10,22,42,0.55); padding:0 22px;">
+        <h3 style="margin:0;"><button type="button" id="q7-b" aria-expanded="{{ open.q7 }}" aria-controls="q7-c" onClick="{{ tg.q7 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:64px; padding:16px 0; background:none; border:0; text-align:left; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(1.0625rem,1rem + 0.3vw,1.25rem); line-height:1.3; color:#F2F8FC; cursor:pointer; transition:color .25s;" style-hover="color:#7FE9F5;"><span>¿Cuándo comienza y cuál es el arancel?</span><span aria-hidden="true" style="position:relative; width:28px; height:28px; flex:none; border:1px solid rgba(59,227,242,0.45); border-radius:50%;"><span style="position:absolute; left:8px; top:13px; width:10px; height:1.5px; background:#7FE9F5;"></span><span hidden="{{ open.q7 }}" style="position:absolute; left:12.25px; top:8.75px; width:1.5px; height:10px; background:#7FE9F5;"></span></span></button></h3>
+        <div id="q7-c" role="region" aria-labelledby="q7-b" hidden="{{ shut.q7 }}"><p style="margin:0; padding:0 40px 22px 0; font-size:16px; line-height:1.6; color:#A9BBCE; max-width:40em;"><a href="#contacto" style="color:#7FE9F5; font-weight:600;">Completá el formulario</a> y te compartiremos las fechas de la próxima edición, el arancel y las condiciones de inscripción.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="08 Formulario" style="position:relative; padding:clamp(72px,9vw,128px) 0; border-top:1px solid rgba(125,211,252,0.08); background:radial-gradient(800px 500px at 20% 30%, rgba(59,227,242,0.08), transparent 70%);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-wrap:wrap; gap:40px clamp(40px,6vw,96px);">
+    <div data-reveal="1" style="flex:1 1 380px; min-width:0;">
+      <p style="margin:0 0 18px; display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7FE9F5;"><span aria-hidden="true" style="width:24px; height:1px; background:#3BE3F2; box-shadow:0 0 8px #3BE3F2;"></span>Solicitar información</p>
+      <h2 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2.125rem,1.4rem + 2.6vw,3.5rem); line-height:1.04; letter-spacing:-0.03em; color:#F5FAFD; max-width:12em; text-wrap:balance;">Da el próximo paso en tu formación médica.</h2>
+      <p style="margin:24px 0 0; font-size:clamp(1.0625rem,1rem + 0.25vw,1.1875rem); line-height:1.6; color:#A9BBCE; max-width:30em; text-wrap:pretty;">Dejanos tus datos y recibí el programa, los detalles de cursada y las condiciones de inscripción del primer curso de medicina regenerativa certificado por la UBA.</p>
+    </div>
+    <div data-reveal="1" data-reveal-delay="140" style="flex:1 1 460px; min-width:0;">
+      <form onSubmit="{{ submit }}" noValidate="{{ true }}" aria-label="Solicitud de información" style="padding:clamp(24px,4vw,40px); border-radius:22px; border:1px solid rgba(59,227,242,0.3); background:linear-gradient(180deg, rgba(16,34,62,0.9), rgba(8,18,36,0.9)); box-shadow:0 30px 80px -30px rgba(0,0,0,0.8), 0 0 50px -16px rgba(59,227,242,0.25); display:flex; flex-direction:column; gap:22px;">
+        <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
+          <p role="alert" style="margin:0; padding:12px 14px; background:rgba(255,122,122,0.1); border:1px solid rgba(255,122,122,0.45); border-radius:10px; color:#FFB4B4; font-size:15px; line-height:1.5;">Revisá los campos señalados para continuar.</p>
+        </sc-if>
+        <div>
+          <label for="f-name" style="display:block; margin-bottom:8px; font-size:14.5px; font-weight:600; color:#E8F1F8;">Nombre y apellido</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" value="{{ f.name }}" onChange="{{ on.name }}" aria-invalid="{{ has.name }}" aria-describedby="e-name" style="width:100%; height:52px; padding:0 16px; font:inherit; font-size:16px; color:#F2F8FC; background:#06101F; border:1px solid rgba(125,211,252,0.25); border-radius:10px; transition:border-color .25s, box-shadow .25s;" style-focus="border-color:#3BE3F2; box-shadow:0 0 0 4px rgba(59,227,242,0.15); outline:none;">
+          <p id="e-name" style="margin:6px 0 0; font-size:14px; line-height:1.4; color:#FF9B9B;">{{ err.name }}</p>
+        </div>
+        <div>
+          <label for="f-prof" style="display:block; margin-bottom:8px; font-size:14.5px; font-weight:600; color:#E8F1F8;">Profesión o especialidad</label>
+          <input id="f-prof" name="prof" type="text" autocomplete="organization-title" value="{{ f.prof }}" onChange="{{ on.prof }}" aria-invalid="{{ has.prof }}" aria-describedby="e-prof" style="width:100%; height:52px; padding:0 16px; font:inherit; font-size:16px; color:#F2F8FC; background:#06101F; border:1px solid rgba(125,211,252,0.25); border-radius:10px; transition:border-color .25s, box-shadow .25s;" style-focus="border-color:#3BE3F2; box-shadow:0 0 0 4px rgba(59,227,242,0.15); outline:none;">
+          <p id="e-prof" style="margin:6px 0 0; font-size:14px; line-height:1.4; color:#FF9B9B;">{{ err.prof }}</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:22px 20px;">
+          <div style="flex:1 1 220px; min-width:0;">
+            <label for="f-email" style="display:block; margin-bottom:8px; font-size:14.5px; font-weight:600; color:#E8F1F8;">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputMode="email" value="{{ f.email }}" onChange="{{ on.email }}" aria-invalid="{{ has.email }}" aria-describedby="e-email" style="width:100%; height:52px; padding:0 16px; font:inherit; font-size:16px; color:#F2F8FC; background:#06101F; border:1px solid rgba(125,211,252,0.25); border-radius:10px; transition:border-color .25s, box-shadow .25s;" style-focus="border-color:#3BE3F2; box-shadow:0 0 0 4px rgba(59,227,242,0.15); outline:none;">
+            <p id="e-email" style="margin:6px 0 0; font-size:14px; line-height:1.4; color:#FF9B9B;">{{ err.email }}</p>
+          </div>
+          <div style="flex:1 1 220px; min-width:0;">
+            <label for="f-wa" style="display:block; margin-bottom:8px; font-size:14.5px; font-weight:600; color:#E8F1F8;">WhatsApp con código de país</label>
+            <input id="f-wa" name="whatsapp" type="tel" autocomplete="tel" inputMode="tel" placeholder="+54 9 11 1234 5678" value="{{ f.wa }}" onChange="{{ on.wa }}" aria-invalid="{{ has.wa }}" aria-describedby="e-wa" style="width:100%; height:52px; padding:0 16px; font:inherit; font-size:16px; color:#F2F8FC; background:#06101F; border:1px solid rgba(125,211,252,0.25); border-radius:10px; transition:border-color .25s, box-shadow .25s;" style-focus="border-color:#3BE3F2; box-shadow:0 0 0 4px rgba(59,227,242,0.15); outline:none;">
+            <p id="e-wa" style="margin:6px 0 0; font-size:14px; line-height:1.4; color:#FF9B9B;">{{ err.wa }}</p>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <input id="f-consent" name="consent" type="checkbox" checked="{{ f.consent }}" onChange="{{ on.consent }}" aria-invalid="{{ has.consent }}" aria-describedby="e-consent" style="flex:none; width:22px; height:22px; margin:1px 0 0; accent-color:#3BE3F2; cursor:pointer;">
+            <label for="f-consent" style="font-size:15px; line-height:1.5; color:#C7D5E3; cursor:pointer;">Acepto que me contacten por email o WhatsApp para recibir información sobre el curso y leí la <a href="#privacidad" style="color:#7FE9F5; font-weight:600;">Política de Privacidad</a>.</label>
+          </div>
+          <p id="e-consent" style="margin:6px 0 0 34px; font-size:14px; line-height:1.4; color:#FF9B9B;">{{ err.consent }}</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <button type="submit" style="width:100%; min-height:58px; padding:0 24px; background:#3BE3F2; color:#03131C; border:0; border-radius:999px; font:inherit; font-size:17px; font-weight:600; cursor:pointer; box-shadow:0 0 0 1px rgba(59,227,242,0.5), 0 8px 30px -6px rgba(59,227,242,0.45); transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), background .35s;" style-hover="transform:translateY(-5px); background:#6EF0FA; box-shadow:0 0 0 1px rgba(110,240,250,0.8), 0 16px 44px -8px rgba(59,227,242,0.7), 0 0 40px rgba(59,227,242,0.35);">Quiero recibir más información</button>
+          <p style="margin:0; font-size:14px; line-height:1.5; color:#A9BBCE; text-align:center;">Solicitar información no implica inscribirte ni realizar un pago.</p>
+        </div>
+        <div role="status" aria-live="polite">
+          <sc-if value="{{ demo }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0; padding:14px 16px; background:rgba(59,227,242,0.08); border:1px solid rgba(59,227,242,0.5); border-radius:12px; color:#E8F1F8; font-size:15.5px; line-height:1.5; font-weight:500;">Esta es una demostración del formulario. Los datos no fueron enviados.</p>
+          </sc-if>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="privacidad" style="position:relative; z-index:1; border-top:1px solid rgba(125,211,252,0.12); background:#030812; padding:clamp(40px,5vw,56px) 0 clamp(96px,10vw,56px);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px 48px;">
+    <div style="flex:1 1 420px; min-width:0; display:flex; align-items:center; gap:20px;">
+      <img src="assets/uba-logo.png" alt="Universidad de Buenos Aires" width="64" height="64" style="width:64px; height:64px; flex:none; filter:invert(1); opacity:0.9;">
+      <div style="min-width:0;">
+      <p style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.25rem; line-height:1.3; color:#F2F8FC; max-width:26em;">Certificado Avanzado en Medicina Regenerativa y Terapias Celulares de Precisión</p>
+      <p style="margin:10px 0 0; font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8EA3B9;">Facultad de Medicina · Universidad de Buenos Aires</p>
+      </div>
+    </div>
+    <a href="#" onClick="{{ noop }}" style="color:#C7D5E3; font-size:15px; text-underline-offset:4px;" style-hover="color:#7FE9F5;">Política de Privacidad</a>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:0; right:0; bottom:0; z-index:40; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(5,11,22,0.88); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-top:1px solid rgba(125,211,252,0.14);">
+    <a href="#contacto" style="display:flex; align-items:center; justify-content:center; gap:10px; min-height:50px; background:#3BE3F2; color:#03131C; font-size:16px; font-weight:600; text-decoration:none; border-radius:999px; box-shadow:0 0 24px rgba(59,227,242,0.35);">Quiero recibir más información<span aria-hidden="true">→</span></a>
+  </div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showCells&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Efectos&quot;},&quot;scrollReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Efectos&quot;},&quot;firstBlockOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;stickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = {
+    narrow: typeof window !== 'undefined' ? window.innerWidth < 1100 : false,
+    menu: false, open: {},
+    f: { name: '', prof: '', email: '', wa: '', consent: false },
+    err: {}, tried: false, demo: false, pastHero: false, atForm: false
+  };
+  tilts = [];
+
+  componentDidMount() {
+    this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.mq = window.matchMedia('(max-width: 1099px)');
+    this.onMq = e => this.setState({ narrow: e.matches, menu: false });
+    this.mq.addEventListener('change', this.onMq);
+    this.setState({ narrow: this.mq.matches });
+    this.onKey = e => { if (e.key === 'Escape' && this.state.menu) this.setState({ menu: false }); };
+    window.addEventListener('keydown', this.onKey);
+    const attach = () => {
+      const h = document.getElementById('hero-cta'), c = document.getElementById('contacto');
+      if (!h || !c) { this.t = setTimeout(attach, 300); return; }
+      this.io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.target === h) this.setState({ pastHero: !en.isIntersecting && en.boundingClientRect.top < 0 });
+          if (en.target === c) this.setState({ atForm: en.isIntersecting || en.boundingClientRect.top < 0 });
+        });
+      });
+      this.io.observe(h); this.io.observe(c);
+    };
+    attach();
+    if (!this.reduce && (this.props.scrollReveal ?? true)) this.t2 = setTimeout(() => this.setupReveal(), 60);
+    if (!this.reduce) this.setupScrollSpin();
+  }
+
+  setupScrollSpin() {
+    let lastY = window.scrollY, lastT = performance.now(), target = 1, rate = 1;
+    this.onSpinScroll = () => {
+      const now = performance.now(), dt = Math.max(16, now - lastT);
+      const v = (window.scrollY - lastY) / dt;
+      lastY = window.scrollY; lastT = now;
+      target = Math.max(-6, Math.min(9, 1 + v * 4));
+    };
+    window.addEventListener('scroll', this.onSpinScroll, { passive: true });
+    const tick = () => {
+      target += (1 - target) * 0.04;
+      rate += (target - rate) * 0.12;
+      if (Math.abs(rate - 1) > 0.002 || this.spinDirty) {
+        document.querySelectorAll('[data-dna] [data-anim]').forEach(el =>
+          el.getAnimations().forEach(a => { a.playbackRate = rate; }));
+        this.spinDirty = Math.abs(rate - 1) > 0.002;
+      }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+
+  componentWillUnmount() {
+    this.mq && this.mq.removeEventListener('change', this.onMq);
+    window.removeEventListener('keydown', this.onKey);
+    this.io && this.io.disconnect();
+    this.rio && this.rio.disconnect();
+    clearTimeout(this.t); clearTimeout(this.t2);
+    cancelAnimationFrame(this.raf);
+    this.onSpinScroll && window.removeEventListener('scroll', this.onSpinScroll);
+  }
+
+  setupReveal() {
+    const els = [...document.querySelectorAll('[data-reveal]')];
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    this.rio = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; this.rio.unobserve(el);
+      const d = +(el.dataset.revealDelay || 0);
+      el.style.transitionDelay = d + 'ms';
+      el.style.opacity = '1'; el.style.transform = 'none';
+      setTimeout(() => ['opacity', 'transform', 'transition', 'transition-delay'].forEach(p => el.style.removeProperty(p)), 1100 + d);
+    }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    els.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(36px)';
+      el.style.transition = `opacity .95s ${ease}, transform .95s ${ease}`;
+      this.rio.observe(el);
+    });
+  }
+
+  heroMove = e => {
+    if (this.reduce) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    this.tilts.forEach(t => t && (t.style.transform = `rotateZ(14deg) rotateX(${(-y * 16).toFixed(2)}deg) rotateY(${(x * 26).toFixed(2)}deg)`));
+  };
+  heroLeave = () => this.tilts.forEach(t => t && (t.style.transform = 'rotateZ(14deg)'));
+
+  dna(idx, R, gap, N) {
+    const h = React.createElement, dur = '16s';
+    const sphere = (x, a, c, glow) => h('div', {
+      'data-anim': '1',
+      style: { position: 'absolute', left: x - 7, top: -7, width: 14, height: 14, borderRadius: '50%',
+        background: `radial-gradient(circle at 35% 30%, #FFFFFF 0%, ${c} 42%, ${glow} 100%)`,
+        boxShadow: `0 0 14px ${c}`, '--a': `${-a}deg`, transform: `rotateY(${-a}deg)`,
+        animation: `dnaFace ${dur} linear infinite` }
+    });
+    const rows = [];
+    for (let i = 0; i < N; i++) {
+      const a = i * 22;
+      rows.push(h('div', { key: i, style: { position: 'absolute', top: i * gap, left: 0, width: 0, height: 0, transformStyle: 'preserve-3d', transform: `rotateY(${a}deg)` } },
+        h('div', { style: { position: 'absolute', left: -R, top: -1, width: 2 * R, height: 2, borderRadius: 2,
+          background: 'linear-gradient(90deg, rgba(59,227,242,0.95), rgba(140,180,255,0.18) 50%, rgba(79,140,255,0.95))' } }),
+        sphere(R, a, '#3BE3F2', '#0B5D6A'),
+        sphere(-R, a, '#6FA4FF', '#1C3F8C')));
+    }
+    return h('div', { 'data-dna': '1', style: { position: 'relative', perspective: '1100px', width: 2 * R + 40, height: N * gap } },
+      h('div', { ref: el => { this.tilts[idx] = el; }, style: { position: 'absolute', inset: 0, transformStyle: 'preserve-3d', transform: 'rotateZ(14deg)', transition: 'transform .6s cubic-bezier(.2,.8,.2,1)' } },
+        h('div', { 'data-anim': '1', style: { position: 'absolute', top: 0, left: '50%', width: 0, height: N * gap, transformStyle: 'preserve-3d', animation: `dnaSpin ${dur} linear infinite` } }, rows)));
+  }
+
+  cells() {
+    const h = React.createElement;
+    const spec = [
+      { top: '12%', left: '-6%', size: 300, dur: 14, delay: 0, c: '59,227,242' },
+      { top: '55%', left: '78%', size: 380, dur: 18, delay: -6, c: '79,140,255' },
+      { top: '82%', left: '18%', size: 220, dur: 12, delay: -3, c: '59,227,242' }
+    ];
+    return spec.map((s, i) => h('div', { key: i, 'data-anim': '1', style: { position: 'absolute', top: s.top, left: s.left, width: s.size, height: s.size, opacity: 0.13, animation: `cellFloat ${s.dur}s ease-in-out ${s.delay}s infinite alternate` } },
+      h('div', { 'data-anim': '1', style: { position: 'absolute', inset: 0, border: `1.5px solid rgba(${s.c},0.9)`, background: `radial-gradient(circle at 50% 50%, rgba(${s.c},0.35), rgba(${s.c},0.08) 60%, transparent 75%)`, boxShadow: `inset 0 0 50px rgba(${s.c},0.45), 0 0 40px rgba(${s.c},0.3)`, animation: `cellMorph ${s.dur * 0.75}s ease-in-out ${s.delay}s infinite` } },
+        h('div', { 'data-anim': '1', style: { position: 'absolute', left: '36%', top: '33%', width: '30%', height: '30%', background: `rgba(${s.c},0.9)`, filter: 'blur(10px)', animation: `cellMorph ${s.dur * 0.5}s ease-in-out infinite reverse` } }))));
+  }
+
+  validate(f) {
+    const e = {};
+    if (f.name.trim().length < 2) e.name = 'Ingresá tu nombre y apellido.';
+    if (!f.prof.trim()) e.prof = 'Indicá tu profesión o especialidad.';
+    const em = f.email.trim();
+    if (!em) e.email = 'Ingresá tu email.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) e.email = 'Revisá el formato del email. Por ejemplo: nombre@dominio.com';
+    const wa = f.wa.replace(/[\s\-().]/g, '');
+    if (!wa) e.wa = 'Ingresá tu número de WhatsApp.';
+    else if (!/^\+\d{8,15}$/.test(wa)) e.wa = 'Incluí el código de país con el signo +. Por ejemplo: +54 9 11 1234 5678';
+    if (!f.consent) e.consent = 'Para continuar, necesitamos tu consentimiento.';
+    return e;
+  }
+
+  setField = k => ev => {
+    const v = k === 'consent' ? ev.target.checked : ev.target.value;
+    this.setState(s => {
+      const f = { ...s.f, [k]: v };
+      return { f, err: s.tried ? this.validate(f) : s.err, demo: false };
+    });
+  };
+
+  submit = ev => {
+    ev.preventDefault();
+    const e = this.validate(this.state.f);
+    const keys = Object.keys(e);
+    this.setState({ tried: true, err: e, demo: keys.length === 0 });
+    if (keys.length) { const el = document.getElementById('f-' + keys[0]); el && el.focus(); }
+  };
+
+  renderVals() {
+    const first = this.props.firstBlockOpen ?? false;
+    const open = {}, shut = {}, tg = {};
+    ['p1', 'p2', 'p3', 'p4', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].forEach(k => {
+      const o = k in this.state.open ? this.state.open[k] : (k === 'p1' && first);
+      open[k] = o; shut[k] = !o;
+      tg[k] = () => this.setState(s => ({ open: { ...s.open, [k]: !o } }));
+    });
+    const err = this.state.err, on = {}, has = {}, errText = {};
+    ['name', 'prof', 'email', 'wa', 'consent'].forEach(k => { on[k] = this.setField(k); has[k] = !!err[k]; errText[k] = err[k] || ''; });
+    const narrow = this.state.narrow;
+    return {
+      open, shut, tg, wide: !narrow, narrow,
+      menu: this.state.menu, menuVisible: narrow && this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      f: this.state.f, on, has, err: errText,
+      hasErrors: this.state.tried && Object.keys(err).length > 0,
+      demo: this.state.demo, submit: this.submit,
+      showSticky: narrow && (this.props.stickyCta ?? true) && this.state.pastHero && !this.state.atForm,
+      noop: e => e.preventDefault(),
+      heroMove: this.heroMove, heroLeave: this.heroLeave,
+      dnaLarge: this.dna(0, 78, 21, 25),
+      dnaSmall: this.dna(1, 62, 21, 26),
+      cells: (this.props.showCells ?? true) ? this.cells() : null
+    };
+  }
+}
+
+</script>
+</body>
+</html>
